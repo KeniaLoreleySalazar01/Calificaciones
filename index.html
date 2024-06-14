@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de Promedio</title>
+</head>
+<body>
+  <h1>Calculadora de Promedio</h1>
+  <form id="calificacionForm">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre"><br><br>
+       
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido"><br><br>
+
+    <label for="grupo">Grupo:</label>
+    <input type="text" id="grupo" name="grupo"><br><br>
+
+    <label for="especialidad">Especialidad:</label>
+    <input type="text" id="especialidad" name="especialidad"><br><br>
+
+    <label for="calificaciones">Calificaciones de las unidades (separadas por coma):</label>
+    <input type="text" id="calificaciones" name="calificaciones"><br><br>
+
+    <input type="button" value="Calcular Promedio" onclick="calcularPromedio()">
+  </form>
+
+  <p id="resultado"></p>
+
+  <script>
+    function calcularPromedio() {
+      var form = document.getElementById("calificacionForm");
+      var calificaciones = form.calificaciones.value.split(',').map(Number);
+      var promedio = calificaciones.reduce((a, b) => a + b, 0) / calificaciones.length;
+    document.getElementById("resultado").innerHTML = "El promedio final es: " + promedio.toFixed(2);
+    }
+  </script>
+</body>
+</html>
